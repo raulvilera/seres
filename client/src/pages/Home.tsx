@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { CheckCircle2, ChevronRight, ClipboardCheck, CloudUpload, GraduationCap, Leaf, RotateCcw, Send, Sparkles, Trophy } from "lucide-react";
 import { toast } from "sonner";
 
-type Student = { name: string; ra: string };
+type Student = { callNumber: number; name: string; ra: string; email: string };
 type Question = {
   id: number;
   lesson: string;
@@ -22,47 +22,47 @@ const SHEET_ID = "1Vg23jd8ma4-ow2YmHYZjLcSBOVGHYWD96V3ycYws9W0";
 const ASSET = "/assets/";
 
 const students: Student[] = [
-  { name: "EVELYN LUANE DE SENA ALVES", ra: "112219637-4" },
-  { name: "GABRIEL RONDINI DA SILVA", ra: "112208931-4" },
-  { name: "GUSTAVO HENRIQUE FIGUEREDO CARVALHO", ra: "120369358-8" },
-  { name: "JOAO MARCOS DANTAS DA SILVA", ra: "112212796-0" },
-  { name: "MIGUEL DE OLIVEIRA AQUINO", ra: "112228039-7" },
-  { name: "PEDRO HENRIQUE FAGUNDES DE LIMA", ra: "112221851-5" },
-  { name: "PEDRO MIGUEL ALMEIDA DO NASCIMENTO", ra: "111128972-4" },
-  { name: "WILLIAN ROBERTO DUARTE", ra: "111401688-3" },
-  { name: "YGOR BRYAN SILVA OLIVEIRA", ra: "121492670-8" },
-  { name: "ANA JÚLLIA LIMA CLAUDIO", ra: "112220804-2" },
-  { name: "AYSHILLA PEREIRA DOS SANTOS", ra: "112039230-5" },
-  { name: "HYAGO SANTOS XAVIER", ra: "113206434-X" },
-  { name: "JULIA DARRIBA CESTARI", ra: "113207466-6" },
-  { name: "JULIANA CRISTINA ARAUJO OLIVEIRA", ra: "113216426-6" },
-  { name: "KAUANY COSTA HELUANY", ra: "110458664-2" },
-  { name: "LUDIMILA NEVES DA SILVA", ra: "112217185-7" },
-  { name: "MATHEUS CRISTHOFER OLIVEIRA DE SOUZA RAMOS", ra: "114156387-3" },
-  { name: "PABLO HENRIQUE DA PAIXÃO TEIXEIRA", ra: "120994167-3" },
-  { name: "YAGO COLDI BELI AZEVEDO DA SILVA", ra: "112049371-7" },
-  { name: "JOÃO MANOEL DO NASCIMENTO MENEZES", ra: "112096075-7" },
-  { name: "IAGO FELIPE SANDRIN BERTIN", ra: "114186470-8" },
-  { name: "ANDRE FRANCESCHINI SOARES", ra: "113059025-2" },
-  { name: "ANA JULIA ROCHA DE JESUS", ra: "111403521-X" },
-  { name: "JULIA DE CASTRO CARDOSO", ra: "113209355-7" },
-  { name: "MANUELA TELES DE OLIVEIRA", ra: "110498132-4" },
-  { name: "RAISSA VITORIA LENARES SANTOS", ra: "114151501-5" },
-  { name: "BRENO APARECIDO DE SOUSA NASCIMENTO", ra: "114146626-0" },
-  { name: "YASMIN CABRAL KELER DOMINGUES", ra: "112213900-7" },
-  { name: "MARIA CLARA COSTA MARTINS", ra: "113208116-6" },
-  { name: "JOAO VICTOR DE CARVALHO SANTOS", ra: "109485196-6" },
-  { name: "MYLLENA CARDOZO FERREIRA", ra: "113212612-5" },
-  { name: "LUDMILA SILVA FELICIANO", ra: "112496089-2" },
-  { name: "LEONARDO RIKELME NUNES", ra: "113208776-4" },
-  { name: "GABRIEL FELIPO DE MORAIS", ra: "112219357-9" },
-  { name: "MIKAELLI PARMEGIANI MATHIAS", ra: "112222661-5" },
-  { name: "EMILLY FERNANDES", ra: "111713689-9" },
-  { name: "LOHAYNI VICTORIA TAVARES DOS SANTOS", ra: "113851262-X" },
-  { name: "EMILLY STEPHANIE CAMARGO DE JESUS", ra: "111847068-0" },
-  { name: "MAISSA QUERCIA GALLO", ra: "112131726-1" },
-  { name: "MANUELA LEDIER DE ABREU", ra: "115125705-9" },
-  { name: "IASMIN DE SOUZA ALBERTO", ra: "111571604-9" },
+  { callNumber: 1, name: 'EVELYN LUANE DE SENA ALVES', ra: '112219637-4', email: '00001122196374SP@al.educacao.sp.gov.br' },
+  { callNumber: 2, name: 'GABRIEL RONDINI DA SILVA', ra: '112208931-4', email: '00001122089314SP@al.educacao.sp.gov.br' },
+  { callNumber: 3, name: 'GUSTAVO HENRIQUE FIGUEREDO CARVALHO', ra: '120369358-8', email: '00001203693588SP@al.educacao.sp.gov.br' },
+  { callNumber: 4, name: 'JOAO MARCOS DANTAS DA SILVA', ra: '112212796-0', email: '00001122127960SP@al.educacao.sp.gov.br' },
+  { callNumber: 5, name: 'MIGUEL DE OLIVEIRA AQUINO', ra: '112228039-7', email: '00001122280397SP@al.educacao.sp.gov.br' },
+  { callNumber: 6, name: 'PEDRO HENRIQUE FAGUNDES DE LIMA', ra: '112221851-5', email: '00001122218515SP@al.educacao.sp.gov.br' },
+  { callNumber: 7, name: 'PEDRO MIGUEL ALMEIDA DO NASCIMENTO', ra: '111128972-4', email: '00001111289724SP@al.educacao.sp.gov.br' },
+  { callNumber: 8, name: 'WILLIAN ROBERTO DUARTE', ra: '111401688-3', email: '00001114016883SP@al.educacao.sp.gov.br' },
+  { callNumber: 9, name: 'YGOR BRYAN SILVA OLIVEIRA', ra: '121492670-8', email: '00001214926708SP@al.educacao.sp.gov.br' },
+  { callNumber: 11, name: 'ANA JÚLLIA LIMA CLAUDIO', ra: '112220804-2', email: '00001122208042SP@al.educacao.sp.gov.br' },
+  { callNumber: 12, name: 'AYSHILLA PEREIRA DOS SANTOS', ra: '112039230-5', email: '00001120392305SP@al.educacao.sp.gov.br' },
+  { callNumber: 13, name: 'HYAGO SANTOS XAVIER', ra: '113206434-X', email: '0000113206434XSP@al.educacao.sp.gov.br' },
+  { callNumber: 14, name: 'JULIA DARRIBA CESTARI', ra: '113207466-6', email: '00001132074666SP@al.educacao.sp.gov.br' },
+  { callNumber: 15, name: 'JULIANA CRISTINA ARAUJO OLIVEIRA', ra: '113216426-6', email: '00001132164266SP@al.educacao.sp.gov.br' },
+  { callNumber: 16, name: 'KAUANY COSTA HELUANY', ra: '110458664-2', email: '00001104586642SP@al.educacao.sp.gov.br' },
+  { callNumber: 17, name: 'LUDIMILA NEVES DA SILVA', ra: '112217185-7', email: '00001122171857SP@al.educacao.sp.gov.br' },
+  { callNumber: 18, name: 'MATHEUS CRISTHOFER OLIVEIRA DE SOUZA RAMOS', ra: '114156387-3', email: '00001141563873SP@al.educacao.sp.gov.br' },
+  { callNumber: 19, name: 'PABLO HENRIQUE DA PAIXÃO TEIXEIRA', ra: '120994167-3', email: '00001209941673SP@al.educacao.sp.gov.br' },
+  { callNumber: 20, name: 'YAGO COLDI BELI AZEVEDO DA SILVA', ra: '112049371-7', email: '00001120493717SP@al.educacao.sp.gov.br' },
+  { callNumber: 23, name: 'JOÃO MANOEL DO NASCIMENTO MENEZES', ra: '112096075-7', email: '00001120960757SP@al.educacao.sp.gov.br' },
+  { callNumber: 24, name: 'IAGO FELIPE SANDRIN BERTIN', ra: '114186470-8', email: '00001141864708SP@al.educacao.sp.gov.br' },
+  { callNumber: 25, name: 'ANDRE FRANCESCHINI SOARES', ra: '113059025-2', email: '00001130590252SP@al.educacao.sp.gov.br' },
+  { callNumber: 27, name: 'ANA JULIA ROCHA DE JESUS', ra: '111403521-X', email: '0000111403521XSP@al.educacao.sp.gov.br' },
+  { callNumber: 28, name: 'JULIA DE CASTRO CARDOSO', ra: '113209355-7', email: '00001132093557SP@al.educacao.sp.gov.br' },
+  { callNumber: 29, name: 'MANUELA TELES DE OLIVEIRA', ra: '110498132-4', email: '00001104981324SP@al.educacao.sp.gov.br' },
+  { callNumber: 30, name: 'RAISSA VITORIA LENARES SANTOS', ra: '114151501-5', email: '00001141515015SP@al.educacao.sp.gov.br' },
+  { callNumber: 32, name: 'BRENO APARECIDO DE SOUSA NASCIMENTO', ra: '114146626-0', email: '00001141466260SP@al.educacao.sp.gov.br' },
+  { callNumber: 34, name: 'YASMIN CABRAL KELER DOMINGUES', ra: '112213900-7', email: '00001122139007SP@al.educacao.sp.gov.br' },
+  { callNumber: 35, name: 'MARIA CLARA COSTA MARTINS', ra: '113208116-6', email: '00001132081166SP@al.educacao.sp.gov.br' },
+  { callNumber: 36, name: 'JOAO VICTOR DE CARVALHO SANTOS', ra: '109485196-6', email: '00001094851966SP@al.educacao.sp.gov.br' },
+  { callNumber: 37, name: 'MYLLENA CARDOZO FERREIRA', ra: '113212612-5', email: '00001132126125SP@al.educacao.sp.gov.br' },
+  { callNumber: 38, name: 'LUDMILA SILVA FELICIANO', ra: '112496089-2', email: '00001124960892SP@al.educacao.sp.gov.br' },
+  { callNumber: 40, name: 'LEONARDO RIKELME NUNES', ra: '113208776-4', email: '00001132087764SP@al.educacao.sp.gov.br' },
+  { callNumber: 42, name: 'GABRIEL FELIPO DE MORAIS', ra: '112219357-9', email: '00001122193579SP@al.educacao.sp.gov.br' },
+  { callNumber: 43, name: 'MIKAELLI PARMEGIANI MATHIAS', ra: '112222661-5', email: '00001122226615SP@al.educacao.sp.gov.br' },
+  { callNumber: 44, name: 'EMILLY FERNANDES', ra: '111713689-9', email: '00001117136899SP@al.educacao.sp.gov.br' },
+  { callNumber: 45, name: 'LOHAYNI VICTORIA TAVARES DOS SANTOS', ra: '113851262-X', email: '' },
+  { callNumber: 46, name: 'EMILLY STEPHANIE CAMARGO DE JESUS', ra: '111847068-0', email: '00001118470680SP@al.educacao.sp.gov.br' },
+  { callNumber: 47, name: 'MAISSA QUERCIA GALLO', ra: '112131726-1', email: '00001121317261SP@al.educacao.sp.gov.br' },
+  { callNumber: 48, name: 'MANUELA LEDIER DE ABREU', ra: '115125705-9', email: '00001151257059SP@al.educacao.sp.gov.br' },
+  { callNumber: 49, name: 'IASMIN DE SOUZA ALBERTO', ra: '111571604-9', email: '00001115716049SP@al.educacao.sp.gov.br' },
 ];
 
 const questions: Question[] = [
@@ -229,6 +229,7 @@ export default function Home() {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [score, setScore] = useState(0);
+  const realizationDate = new Intl.DateTimeFormat("pt-BR", { dateStyle: "short", timeZone: "America/Sao_Paulo" }).format(new Date());
 
   const student = useMemo(() => students.find((item) => item.name === studentName), [studentName]);
   const answeredCount = Object.values(answers).filter(Boolean).length;
@@ -269,7 +270,10 @@ export default function Home() {
       sheetId: SHEET_ID,
       turma,
       nome: student.name,
+      numeroChamada: student.callNumber,
       ra: student.ra,
+      emailInstitucional: student.email,
+      dataRealizacao: realizationDate,
       pontuacaoObjetiva: multipleScore,
       totalObjetivas: 7,
       respostas: questions.reduce<Record<string, string>>((result, question) => {
@@ -309,9 +313,12 @@ export default function Home() {
       <section className="student-card" aria-label="Identificação do estudante">
         <div className="student-grid">
           <label className="field-label">Nome <span>*</span><select value={studentName} onChange={(event) => setStudentName(event.target.value)}><option value="">Selecione seu nome</option>{students.map((item) => <option key={item.ra} value={item.name}>{item.name}</option>)}</select></label>
-          <label className="field-label">RA <span className="optional">preenchido automaticamente</span><input value={student?.ra ?? ""} readOnly placeholder="Será exibido ao selecionar seu nome" /></label>
+          <label className="field-label">Nº da chamada <span className="optional">preenchido automaticamente</span><input value={student?.callNumber ?? ""} readOnly placeholder="—" /></label>
+          <label className="field-label">RA <span className="optional">preenchido automaticamente</span><input value={student?.ra ?? ""} readOnly placeholder="—" /></label>
+          <label className="field-label">E-mail institucional <span className="optional">preenchido automaticamente</span><input value={student?.email ?? ""} readOnly placeholder="—" /></label>
+          <label className="field-label">Data de realização <span className="optional">automática</span><input value={realizationDate} readOnly /></label>
         </div>
-        {student && <div className="student-confirm"><CheckCircle2 size={17} /> Identificação pronta para <strong>{student.name}</strong>. Confira o RA antes de seguir.</div>}
+        {student && <div className="student-confirm"><CheckCircle2 size={17} /> Identificação pronta para <strong>{student.name}</strong>. Confira os dados antes de seguir.</div>}
       </section>
 
       <section className="progress-strip"><div className="progress-label"><span>SEU PROGRESSO</span><strong>{answeredCount}/{questions.length} respondidas</strong></div><div className="progress-track"><div className="progress-value" style={{ width: `${progress}%` }} /></div><span className="progress-percent">{progress}%</span></section>
