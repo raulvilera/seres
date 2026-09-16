@@ -248,7 +248,7 @@ export default function Home() {
 
   async function submitActivity() {
     if (!turma || !studentName || !student) {
-      toast.error("Selecione a turma e o nome antes de enviar.");
+      toast.error("Selecione seu nome antes de enviar.");
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
