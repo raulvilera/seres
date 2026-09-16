@@ -223,7 +223,7 @@ const questions: Question[] = [
 const initialAnswers = Object.fromEntries(questions.map((q) => [`q${q.id}`, ""])) as Record<string, string>;
 
 export default function Home() {
-  const [turma, setTurma] = useState("");
+  const turma = "3ª Série F";
   const [studentName, setStudentName] = useState("");
   const [answers, setAnswers] = useState<Record<string, string>>(initialAnswers);
   const [submitted, setSubmitted] = useState(false);
@@ -306,21 +306,9 @@ export default function Home() {
         <div className="topbar-meta"><span>Biologia • 3º bimestre</span><span className="secure-dot">● atividade individual</span></div>
       </header>
 
-      <section className="hero-wrap">
-        <div className="hero-copy">
-          <div className="eyebrow"><Sparkles size={15} /> MISSÃO VIDA & EQUILÍBRIO</div>
-          <h1>Uma jornada pelos ciclos da vida.</h1>
-          <p className="hero-lede">Resolva situações-problema, interprete evidências e conecte fenômenos da Terra às escolhas que protegem os ecossistemas.</p>
-          <div className="hero-pills"><span><ClipboardCheck size={15} /> 10 questões</span><span><GraduationCap size={15} /> 3ª Série F</span><span><Trophy size={15} /> 7 objetivas + 3 discursivas</span></div>
-        </div>
-        <div className="hero-orbit" aria-hidden="true"><div className="orbit-ring ring-one" /><div className="orbit-ring ring-two" /><div className="planet"><Leaf size={36} /></div><span className="orbit-chip chip-one">CO₂</span><span className="orbit-chip chip-two">N₂</span><span className="orbit-chip chip-three">O₂</span></div>
-      </section>
-
       <section className="student-card" aria-label="Identificação do estudante">
-        <div className="card-heading"><div><span className="section-kicker">IDENTIFICAÇÃO</span><h2>Antes de começar, diga quem é você.</h2></div><span className="required-note">* campos obrigatórios</span></div>
         <div className="student-grid">
-          <label className="field-label">Turma <span>*</span><select value={turma} onChange={(event) => setTurma(event.target.value)}><option value="">Selecione a turma</option><option value="3ª Série F">3ª Série F</option></select></label>
-          <label className="field-label">Nome <span>*</span><select value={studentName} onChange={(event) => setStudentName(event.target.value)} disabled={!turma}><option value="">{turma ? "Selecione seu nome" : "Escolha a turma primeiro"}</option>{students.map((item) => <option key={item.ra} value={item.name}>{item.name}</option>)}</select></label>
+          <label className="field-label">Nome <span>*</span><select value={studentName} onChange={(event) => setStudentName(event.target.value)}><option value="">Selecione seu nome</option>{students.map((item) => <option key={item.ra} value={item.name}>{item.name}</option>)}</select></label>
           <label className="field-label">RA <span className="optional">preenchido automaticamente</span><input value={student?.ra ?? ""} readOnly placeholder="Será exibido ao selecionar seu nome" /></label>
         </div>
         {student && <div className="student-confirm"><CheckCircle2 size={17} /> Identificação pronta para <strong>{student.name}</strong>. Confira o RA antes de seguir.</div>}
