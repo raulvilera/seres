@@ -41,7 +41,7 @@ function getSheet_() {
 }
 
 function ensureHeaders_(sheet) {
-  const headers = ['Data/hora', 'Turma', 'Nome', 'RA', 'Pontuação objetiva', 'Total objetivas'];
+  const headers = ['Data/hora', 'Data de realização', 'Turma', 'Nome', 'Nº da chamada', 'RA', 'E-mail institucional', 'Pontuação objetiva', 'Total objetivas'];
   for (let i = 1; i <= QUESTION_COUNT; i += 1) {
     headers.push(`Q${i} — resposta`, `Q${i} — status`);
   }
@@ -70,9 +70,12 @@ function validatePayload_(payload) {
 function buildRow_(payload) {
   const row = [
     new Date(),
+    payload.dataRealizacao || '',
     payload.turma,
     payload.nome,
+    Number(payload.numeroChamada || 0),
     payload.ra,
+    payload.emailInstitucional || '',
     Number(payload.pontuacaoObjetiva || 0),
     Number(payload.totalObjetivas || 7),
   ];
@@ -86,7 +89,7 @@ function formatAnswerCells_(sheet, rowNumber) {
   // Cada resposta fica ao lado do seu status. A formatação condicional colore
   // diretamente a célula que recebeu a resposta, conforme o status calculado.
   for (let i = 0; i < QUESTION_COUNT; i += 1) {
-    const answerColumn = 7 + i * 2;
+    const answerColumn = 10 + i * 2;
     const statusColumn = answerColumn + 1;
     const answerCell = sheet.getRange(rowNumber, answerColumn);
     const statusCell = sheet.getRange(rowNumber, statusColumn);
@@ -104,11 +107,11 @@ function formatAnswerCells_(sheet, rowNumber) {
 
   // Mantém regras de CF para edições posteriores na aba, além da cor aplicada ao enviar.
   const answerRanges = [];
-  for (let i = 0; i < QUESTION_COUNT; i += 1) answerRanges.push(sheet.getRange(2, 7 + i * 2, Math.max(sheet.getLastRow() - 1, 1), 1));
+  for (let i = 0; i < QUESTION_COUNT; i += 1) answerRanges.push(sheet.getRange(2, 10 + i * 2, Math.max(sheet.getLastRow() - 1, 1), 1));
   const rules = sheet.getConditionalFormatRules().filter((rule) => !String(rule.getRanges()[0].getA1Notation()).match(/G|I|K|M|O|Q|S|U|W|Y/));
   answerRanges.forEach((range, index) => {
-    const answerColumnLetter = columnLetter_(7 + index * 2);
-    const statusColumnLetter = columnLetter_(8 + index * 2);
+    const answerColumnLetter = columnLetter_(10 + index * 2);
+    const statusColumnLetter = columnLetter_(11 + index * 2);
     rules.push(SpreadsheetApp.newConditionalFormatRule().whenFormulaSatisfied(`$${statusColumnLetter}2="Correta"`).setBackground('#c7e6ff').setFontColor('#12456d').setBold(true).setRanges([range]).build());
     rules.push(SpreadsheetApp.newConditionalFormatRule().whenFormulaSatisfied(`$${statusColumnLetter}2="Incorreta"`).setBackground('#ffddd7').setFontColor('#8e3027').setBold(true).setRanges([range]).build());
   });
@@ -133,6 +136,6 @@ function jsonOutput_(data) {
 function setupSheet() {
   const sheet = getSheet_();
   sheet.getRange('A:A').setNumberFormat('dd/mm/yyyy hh:mm');
-  sheet.getRange(1, 1, 1, 26).setWrap(true);
-  sheet.autoResizeColumns(1, 26);
+  sheet.getRange(1, 1, 1, 29).setWrap(true);
+  sheet.autoResizeColumns(1, 29);
 }
