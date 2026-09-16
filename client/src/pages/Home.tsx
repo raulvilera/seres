@@ -19,7 +19,7 @@ type Question = {
 
 const APPS_SCRIPT_URL = "";
 const SHEET_ID = "1Vg23jd8ma4-ow2YmHYZjLcSBOVGHYWD96V3ycYws9W0";
-const ASSET = "/manus-storage/";
+const ASSET = "/assets/";
 
 const students: Student[] = [
   { name: "EVELYN LUANE DE SENA ALVES", ra: "112219637-4" },
@@ -73,7 +73,7 @@ const questions: Question[] = [
     type: "multiple",
     title: "Uma troca invisível que sustenta a vida",
     prompt: "Em uma área de mata próxima à escola, as plantas retiram gás carbônico do ar durante a fotossíntese, enquanto plantas e animais devolvem gás carbônico ao ambiente pela respiração. Considerando também a relação com o oxigênio, qual alternativa descreve corretamente essa dinâmica?",
-    image: `${ASSET}ciclo-carbono-oxigenio_953a55a0.png`,
+    image: `${ASSET}ciclo-carbono-oxigenio.svg`,
     imageAlt: "Ilustração dos ciclos do carbono e do oxigênio em um ecossistema",
     options: [
       "A fotossíntese libera gás carbônico e a respiração absorve oxigênio da atmosfera.",
@@ -90,7 +90,7 @@ const questions: Question[] = [
     type: "multiple",
     title: "O trabalho das bactérias do solo",
     prompt: "Em uma horta comunitária, estudantes observam que algumas bactérias associadas ao solo e às raízes participam da transformação de compostos nitrogenados. Por que esses microrganismos são essenciais para o ciclo do nitrogênio?",
-    image: `${ASSET}ciclo-nitrogenio_8cae7a76.png`,
+    image: `${ASSET}ciclo-nitrogenio.svg`,
     imageAlt: "Ilustração do ciclo do nitrogênio com plantas e bactérias do solo",
     options: [
       "Porque convertem formas de nitrogênio em compostos que podem ser assimilados pelas plantas.",
@@ -107,7 +107,7 @@ const questions: Question[] = [
     type: "multiple",
     title: "Escolhas para adubar sem desequilibrar",
     prompt: "Uma propriedade rural precisa corrigir rapidamente a deficiência de nitrogênio no solo, mas também quer reduzir impactos ambientais. A equipe compara um fertilizante inorgânico de liberação rápida com composto orgânico de liberação gradual. Qual análise é cientificamente adequada?",
-    image: `${ASSET}fertilizantes-agricultura_668e03c7.png`,
+    image: `${ASSET}fertilizantes-agricultura.svg`,
     imageAlt: "Comparação visual entre fertilizantes orgânicos e inorgânicos em um campo agrícola",
     options: [
       "Fertilizantes orgânicos sempre são imediatamente absorvidos e não alteram a vida do solo.",
@@ -124,7 +124,7 @@ const questions: Question[] = [
     type: "multiple",
     title: "Quando o excesso de nutrientes sufoca a água",
     prompt: "Após chuvas intensas, uma lagoa recebe esgoto e nutrientes carregados de uma área agrícola. Dias depois, há uma grande proliferação de algas, a água fica esverdeada e peixes aparecem mortos. Qual cadeia de eventos explica melhor o caso?",
-    image: `${ASSET}eutrofizacao_76c99926.png`,
+    image: `${ASSET}eutrofizacao.svg`,
     imageAlt: "Comparação entre um lago equilibrado e um lago eutrofizado",
     options: [
       "Aumento de nutrientes → proliferação de algas → decomposição intensa → redução do oxigênio dissolvido.",
@@ -141,7 +141,7 @@ const questions: Question[] = [
     type: "multiple",
     title: "Planejando uma agricultura regenerativa",
     prompt: "Para diminuir a entrada de nutrientes em um rio, uma escola agrícola propõe combinar adubação verde, rotação de culturas, manutenção de mata ciliar e reflorestamento. Por que esse conjunto de ações é coerente com a mitigação dos impactos nos ciclos biogeoquímicos?",
-    image: `${ASSET}mitigacao-ciclos_5227aa3f.png`,
+    image: `${ASSET}mitigacao-ciclos.svg`,
     imageAlt: "Ações ecológicas de mitigação protegendo o solo e um rio",
     options: [
       "Porque elimina completamente os ciclos naturais e impede qualquer decomposição.",
@@ -158,7 +158,7 @@ const questions: Question[] = [
     type: "multiple",
     title: "Da curiosidade à investigação",
     prompt: "Uma estudante percebe que mudas próximas à janela crescem mais rápido e decide investigar a influência da luz. Ela formula uma hipótese, mantém água e tipo de solo constantes, varia a luminosidade e mede o crescimento durante duas semanas. Qual aspecto torna esse procedimento científico?",
-    image: `${ASSET}pasteur-fraco-real_ac338ce6.jpg`,
+    image: `${ASSET}pasteur-frasco.svg`,
     imageAlt: "Fotografia real de um frasco de pescoço de cisne usado nos experimentos de Pasteur",
     options: [
       "A conclusão é definida antes da observação para evitar resultados inesperados.",
@@ -175,7 +175,7 @@ const questions: Question[] = [
     type: "multiple",
     title: "Hipóteses para uma Terra antiga",
     prompt: "Ao comparar explicações históricas para a origem da vida, a turma encontra panspermia cósmica, evolução química, abiogênese e biogênese. Qual alternativa diferencia corretamente esses conceitos?",
-    image: `${ASSET}teorias-origem-vida_eff93ade.png`,
+    image: `${ASSET}teorias-origem-vida.svg`,
     imageAlt: "Representação simbólica de diferentes hipóteses sobre a origem da vida",
     options: [
       "A biogênese afirma que a vida surge sempre de matéria sem vida, sem organismos preexistentes.",
@@ -192,7 +192,7 @@ const questions: Question[] = [
     type: "essay",
     title: "Evidências contra a geração espontânea",
     prompt: "Imagine que você precisa explicar para uma comunidade por que alimentos protegidos de contaminação não desenvolvem microrganismos da mesma forma que alimentos expostos. Compare, em ordem cronológica, as contribuições dos experimentos de Redi, Spallanzani e Pasteur para a consolidação da biogênese.",
-    image: `${ASSET}redi-spallanzani-pasteur_401a9e97.png`,
+    image: `${ASSET}redi-spallanzani-pasteur.svg`,
     imageAlt: "Experimentos históricos de Redi, Spallanzani e Pasteur contra a geração espontânea",
     placeholder: "Organize sua resposta mencionando o controle experimental, a contaminação e a conclusão de cada pesquisador...",
   },
@@ -203,7 +203,7 @@ const questions: Question[] = [
     type: "essay",
     title: "A experiência que simulou um cenário antigo",
     prompt: "Explique como a teoria de Oparin e Haldane e o experimento de Urey e Miller se relacionam. Em sua resposta, descreva as condições simuladas da Terra primitiva e o que a formação de moléculas orgânicas indicou — sem afirmar que o experimento criou seres vivos.",
-    image: `${ASSET}oparin-miller_b847cf00.png`,
+    image: `${ASSET}oparin-miller.svg`,
     imageAlt: "Terra primitiva e aparato experimental de Urey e Miller",
     placeholder: "Relacione atmosfera, fontes de energia, moléculas orgânicas e os limites da evidência experimental...",
   },
@@ -214,7 +214,7 @@ const questions: Question[] = [
     type: "essay",
     title: "Duas explicações históricas para a evolução",
     prompt: "Em uma população de aves, indivíduos com bicos de formatos diferentes encontram alimentos distintos após uma mudança ambiental. Compare como Lamarck e Darwin poderiam explicar a transformação da população ao longo das gerações. Use os conceitos de uso e desuso, caracteres adquiridos, variação e seleção natural.",
-    image: `${ASSET}origem-vida_cb337b55.png`,
+    image: `${ASSET}origem-vida.svg`,
     imageAlt: "Ilustração conceitual sobre evolução, ambiente e investigação da vida",
     placeholder: "Construa uma comparação cuidadosa entre as duas teorias e indique qual mecanismo é aceito pela ciência atual...",
   },
