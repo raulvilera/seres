@@ -19,7 +19,7 @@ type Question = {
 
 const APPS_SCRIPT_URL = "";
 const SHEET_ID = "1Vg23jd8ma4-ow2YmHYZjLcSBOVGHYWD96V3ycYws9W0";
-const ASSET = "/manus-storage/";
+const ASSET = "/assets/";
 
 const students: Student[] = [
   { name: "EVELYN LUANE DE SENA ALVES", ra: "112219637-4" },
